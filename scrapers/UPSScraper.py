@@ -7,9 +7,9 @@ class Item(object):
 class UPSScraper(object):
     def __init__(self, trackingNo):
         self.trackingNo = trackingNo
-        self.items = []
     
     def get_items(self):
+        items = []
         tree = lxml.html.parse('http://wwwapps.ups.com/WebTracking/processInputRequest?sort_by=status&tracknums_displayed=1&TypeOfInquiryNumber=T&loc=en_US&InquiryNumber1='+self.trackingNo+'&track.x=0&track.y=0')
         
         table = tree.xpath('//table[@class="dataTable"][1]/tr')[1:]
@@ -23,7 +23,7 @@ class UPSScraper(object):
             item.time = row.xpath('td[3]/text()')[0]
             item.description = row.xpath('td[4]/text()')[0].strip()
             
-            self.items.append(item)
+            items.append(item)
         
-        return self.items
+        return items
 

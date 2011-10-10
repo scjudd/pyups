@@ -19,8 +19,8 @@ class UPSScraper(object):
             item.location = re.sub(',\s+', ', ', row.xpath('td[1]/text()')[0].strip())
             if item.location is '':
                 item.location = '--------------------'
-            item.date = row.xpath('td[2]/text()')[0]
-            item.time = row.xpath('td[3]/text()')[0]
+            item.date = row.xpath('td[2]/text()')[0].strip()
+            item.time = row.xpath('td[3]/text()')[0].strip()
             item.description = row.xpath('td[4]/text()')[0].strip()
             
             items.append(item)

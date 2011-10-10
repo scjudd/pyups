@@ -11,5 +11,5 @@ package = UPSScraper(sys.argv[1])
 print('[Tracking info for: %s]\n' % package.trackingNo)
 
 for update in package.get_items():
-    print('%s %s %s %s' % (update.location.ljust(20), update.date.ljust(10),
+    print('%s %s %s %s' % (update.location.ljust(40), update.date.ljust(10),
                              update.time.ljust(10), update.description))
